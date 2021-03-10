@@ -4,6 +4,8 @@ import Joke from './components/Joke'
 import jokesData from './data/jokesData'
 import Product from './components/Product'
 import productData from './data/productsData'
+import TodoItem from './components/TodoItem'
+import todosData from './data/todosData'
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
@@ -15,13 +17,23 @@ import productData from './data/productsData'
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findindex
 
 function App() {
-    const jokesComponents = jokesData.map(joke => <Joke key={joke.id} question={joke.question} answer={joke.punchLine} />)
+    const jokesComponents = jokesData.map(item => <Joke key={item.id} question={item.question} answer={item.punchLine} />)
     const productComponents = productData.map(item => <Product key={item.id} product={item} />)
+    const todoComponents = todosData.map(item => <TodoItem key={item.id} text={item.text} completed={item.completed} />)
+
     return (
         <div>
-            {productComponents}
+            <div className="todo-list">
+                {todoComponents}
+            </div>
+            <hr />
+            <div className="product-list">
+                {productComponents}
+            </div>
             <hr/>
-            {jokesComponents}
+            <div className="joke-list">
+                {jokesComponents}
+            </div>
         </div>
     )
 }
