@@ -31,6 +31,7 @@ class App extends Component {
         this.setState(prevState => {
             const updatedTodos = prevState.todos.map(todo => {
                 if (todo.id === id) {
+                    console.log(`TodoItem ${id} props.completed change from ${todo.completed} to ${!todo.completed}`)
                     return {
                         ...todo,
                         completed: !todo.completed
