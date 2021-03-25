@@ -9,6 +9,7 @@ import Product from './components/Product'
 import productData from './data/productsData'
 import TodoItem from './components/TodoItem'
 import todosData from './data/todosData'
+import Loading from './components/Loading'
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
@@ -25,7 +26,8 @@ class App extends Component {
         this.state = {
             todos: todosData,
             count: 0,
-            color: ""
+            color: "",
+            isLoading: true
         }
         this.handleChange = this.handleChange.bind(this)
         this.increment = this.increment.bind(this)
@@ -59,7 +61,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        console.log("Mounted")
+        console.log("Mounting...")
+        setTimeout(() => {
+            this.setState({
+                isLoading: false
+            })
+            console.log("Mounted")
+        }, 3000)
     }
 
     componentDidUpdate(prevProps, prevStates) {
@@ -82,28 +90,32 @@ class App extends Component {
         console.log("Rendered")
         console.log(this.state.color)
 
-        return (
-            <div>
-                <div className="increment">
-                    <h1 style={{color: this.state.color}}>{this.state.count}</h1>
-                    <p>Color: {this.state.color}</p>
-                    <button onClick={this.increment}>
-                        Increment!
-                    </button>
+        if (this.state.isLoading === true) {
+            return (<Loading />)
+        } else {
+            return (
+                <div>
+                    <div className="increment">
+                        <h1 style={{color: this.state.color}}>{this.state.count}</h1>
+                        <p>Color: {this.state.color}</p>
+                        <button onClick={this.increment}>
+                            Increment!
+                        </button>
+                    </div>
+                    <div className="todo-list">
+                        {todoComponents}
+                    </div>
+                    <hr />
+                    <div className="product-list">
+                        {productComponents}
+                    </div>
+                    <hr/>
+                    <div className="joke-list">
+                        {jokesComponents}
+                    </div>
                 </div>
-                <div className="todo-list">
-                    {todoComponents}
-                </div>
-                <hr />
-                <div className="product-list">
-                    {productComponents}
-                </div>
-                <hr/>
-                <div className="joke-list">
-                    {jokesComponents}
-                </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
