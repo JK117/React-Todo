@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import randomcolor from "randomcolor"
 
 import './App.css'
 
@@ -22,9 +23,12 @@ class App extends Component {
     constructor(props) {
         super()
         this.state = {
-            todos: todosData
+            todos: todosData,
+            count: 0,
+            color: ""
         }
         this.handleChange = this.handleChange.bind(this)
+        this.increment = this.increment.bind(this)
     }
 
     handleChange (id) {
@@ -45,6 +49,27 @@ class App extends Component {
         })
     }
 
+    increment() {
+        this.setState(prevState => {
+            return {
+                count: prevState.count + 1,
+                // color: randomcolor()
+            }
+        })
+    }
+
+    componentDidMount() {
+        console.log("Mounted")
+    }
+
+    componentDidUpdate(prevProps, prevStates) {
+        if (prevStates.count !== this.state.count) {
+            const newColor = randomcolor()
+            this.setState({color: newColor})
+            console.log(`Updated. New color ${newColor} created.`)
+        }
+    }
+
     render() {
         const jokesComponents = jokesData.map(item => <Joke key={item.id} question={item.question} answer={item.punchLine} />)
         const productComponents = productData.map(item => <Product key={item.id} product={item} />)
@@ -54,8 +79,18 @@ class App extends Component {
             handleChange={this.handleChange}
         />)
 
+        console.log("Rendered")
+        console.log(this.state.color)
+
         return (
             <div>
+                <div className="increment">
+                    <h1 style={{color: this.state.color}}>{this.state.count}</h1>
+                    <p>Color: {this.state.color}</p>
+                    <button onClick={this.increment}>
+                        Increment!
+                    </button>
+                </div>
                 <div className="todo-list">
                     {todoComponents}
                 </div>
