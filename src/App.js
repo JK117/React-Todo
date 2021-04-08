@@ -79,7 +79,7 @@ class App extends Component {
     }
 
     render() {
-        const jokesComponents = jokesData.map(item => <Joke key={item.id} question={item.question} answer={item.punchLine} />)
+        const jokesComponents = jokesData.map(item => <Joke key={item.id} joke={item} />)
         const productComponents = productData.map(item => <Product key={item.id} product={item} />)
         const todoComponents = this.state.todos.map(item => <TodoItem 
             key={item.id} 
