@@ -37,6 +37,22 @@
   }
 }
 
+.flex-container {
+  /* display: inline-flex; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border: 3px solid grey;
+}
+
+.flex-item {
+  /* display: flex; */
+  align-self: center;
+  margin: auto;
+  border: 2px dashed skyblue;
+}
+
 .todo-list {
   background-color: white;
   margin: auto;

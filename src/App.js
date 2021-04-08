@@ -94,23 +94,23 @@ class App extends Component {
             return (<Loading />)
         } else {
             return (
-                <div>
-                    <div className="increment">
+                <div className="flex-container">
+                    <div className="flex-item increment">
                         <h1 style={{color: this.state.color}}>{this.state.count}</h1>
                         <p>Color: {this.state.color}</p>
                         <button onClick={this.increment}>
                             Increment!
                         </button>
                     </div>
-                    <div className="todo-list">
+                    <div className="flex-item todo-list">
                         {todoComponents}
                     </div>
                     <hr />
-                    <div className="product-list">
+                    <div className="flex-item product-list">
                         {productComponents}
                     </div>
                     <hr/>
-                    <div className="joke-list">
+                    <div className="flex-item joke-list">
                         {jokesComponents}
                     </div>
                 </div>
