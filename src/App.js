@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Switch, Route, Link } from "react-router-dom"
 import randomcolor from "randomcolor"
 
 import './App.css'
@@ -94,26 +95,34 @@ class App extends Component {
             return (<Loading />)
         } else {
             return (
-                <div className="flex-container">
-                    <div className="flex-item increment">
-                        <h1 style={{color: this.state.color}}>{this.state.count}</h1>
-                        <p>Color: {this.state.color}</p>
-                        <button onClick={this.increment}>
-                            Increment!
-                        </button>
+                <div className="App">
+                    <div className="App-header">
+                        <h1>Test Field</h1>
+                        <p>To guide you into the world of Pokemon</p>
                     </div>
-                    <div className="flex-item todo-list">
-                        {todoComponents}
-                    </div>
-                    <hr />
-                    <div className="flex-item product-list">
-                        {productComponents}
-                    </div>
-                    <hr/>
-                    <div className="flex-item joke-list">
-                        {jokesComponents}
+
+                    <div className="flex-container">
+                        <div className="flex-item increment">
+                            <h1 style={{color: this.state.color}}>{this.state.count}</h1>
+                            <p>Color: {this.state.color}</p>
+                            <button onClick={this.increment}>
+                                Increment!
+                            </button>
+                        </div>
+                        <div className="flex-item todo-list">
+                            {todoComponents}
+                        </div>
+                        <hr />
+                        <div className="flex-item product-list">
+                            {productComponents}
+                        </div>
+                        <hr/>
+                        <div className="flex-item joke-list">
+                            {jokesComponents}
+                        </div>
                     </div>
                 </div>
+                
             )
         }
     }
