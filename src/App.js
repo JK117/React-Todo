@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Switch, Route, Link } from "react-router-dom"
+import { Link, NavLink, Switch, Route, Redirect } from "react-router-dom"
 import randomcolor from "randomcolor"
 
 import './App.css'
@@ -95,6 +95,48 @@ class App extends Component {
             return (<Loading />)
         } else {
             return (
+                // <div className="App">
+                //     <header classNameName="site-header jumbotron">
+                //         <div className="container">
+                //             <div className="row">
+                //                 <div className="col-xs-12">
+                //                     <h1>TEST FIELD</h1>
+                //                     <p>Blabla...</p>
+                //                 </div>
+                //             </div>
+                //             <div className="row">
+                //                 <div className="col-xs-2 col-xs-offset-2">
+                //                     <div className="list-group">
+                //                         <NavLink className="list-group-item" to="/todoList">
+                //                             Todos
+                //                         </NavLink>
+                //                         <NavLink className="list-group-item" to="/productList">
+                //                             Products
+                //                         </NavLink>
+                //                         <NavLink className="list-group-item" to="/jokeList">
+                //                             Jokes
+                //                         </NavLink>
+                //                     </div>
+                //                 </div>
+                //                 <div className="col-xs-6">
+                //                     <div className="panel">
+                //                         <div className="panel-body">
+                //                             <Switch>
+                //                                 <Route path="/todoList" component={todoComponents}></Route>
+                //                                 <Route path="/productList" component={productComponents}></Route>
+                //                                 <Route path="/jokeList" component={jokesComponents}></Route>
+                //                                 <Redirect to="/todoList"></Redirect>
+                //                             </Switch>
+                //                         </div>
+                //                     </div>
+                //                 </div>
+                //             </div>
+                //         </div>
+                //     </header>
+                // </div>
+
+
+
                 <div className="App">
                     <div className="App-header">
                         <h1>Test Field</h1>
@@ -122,7 +164,6 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
-                
             )
         }
     }
